@@ -5,7 +5,7 @@ Install kvm packages
 
 ```
 apt update
-apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-efi qemu-utils
+apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-efi qemu-utils virt-viewer
 ufw allow 5900
 ufw allow 3389
 
@@ -35,7 +35,7 @@ virt-install --name='Windows10' \
 --vcpus 6 \
 --disk path=/var/lib/libvirt/images/Windows10/Windows10.qcow2,size=256 \
 --cdrom /var/lib/libvirt/images/Windows10/Windows10.iso \
---graphics vnc \
+--graphics vnc,listen=0.0.0.0 --noautoconsole \
 --hvm \
 --arch x86_64 \
 --sound \
