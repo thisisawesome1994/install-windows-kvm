@@ -35,7 +35,7 @@ virt-install --name='Windows10' \
 --vcpus 6 \
 --disk path=/var/lib/libvirt/images/Windows10/Windows10.qcow2,size=256 \
 --cdrom /var/lib/libvirt/images/Windows10/Windows10.iso \
---graphics vnc,listen=0.0.0.0 --noautoconsole \
+--graphics vnc,listen=0.0.0.0 --passwd='password' \
 --hvm \
 --arch x86_64 \
 --sound \
