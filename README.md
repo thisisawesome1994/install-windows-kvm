@@ -11,6 +11,21 @@ ufw allow 3389
 
 ```
 
+Edit default.xml and add this line inside dhcp section, below the 'range start' section.
+
+use command: virsh net-edit default
+
+```
+<host mac='00:0C:24:4F:88:7C' name='Windows10' ip='192.168.122.2'/>
+```
+
+Start virsh default network
+
+```
+virsh net-autostart default
+virsh net-start default
+```
+
 Start virtual machine by this command
 
 ```
@@ -24,7 +39,8 @@ virt-install --name='Windows10' \
 --machine type=q35,accel=kvm \
 --sound \
 --accelerate \
---cpuset=8
+--cpuset=0,1,2,3,4,5 \
+--network default,mac=00:0C:24:4F:88:7C
 ```
 
 Now connect over vnc, and finish installation.
