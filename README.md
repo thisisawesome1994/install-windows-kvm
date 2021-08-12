@@ -5,7 +5,7 @@ Install kvm packages
 
 ```
 apt update
-apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-efi qemu-utils
 ufw allow 5900
 ufw allow 3389
 
@@ -32,15 +32,17 @@ Start virtual machine by this command
 virt-install --name='Windows10' \
 --description='Windows10' \
 --ram=12288 \
---smp 6,sockets=1,cores=3,threads=6 \
+--vcpus 6 \
 --disk path=/var/lib/libvirt/images/Windows10/Windows10.qcow2,size=256 \
 --cdrom /var/lib/libvirt/images/Windows10/Windows10.iso \
 --graphics vnc \
---machine type=q35,accel=kvm \
+--hvm \
+--arch x86_64 \
 --sound \
 --accelerate \
 --cpuset=0,1,2,3,4,5 \
---network default,mac=00:0C:24:4F:88:7C
+--network default,mac=00:0C:24:4F:88:7C \
+--os-variant win10
 ```
 
 Now connect over vnc, and finish installation.
