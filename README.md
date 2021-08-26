@@ -47,7 +47,7 @@ virt-install --name='Windows10' \
 
 Now connect over vnc, and finish installation.
 
-If you want more then 2 cores, use "virsh edit Windows10", and edit the following below <features> section:
+If you want more then 2 cores, use "virsh edit Windows10", and edit the following below "<features>" section:
 
 
 ```
