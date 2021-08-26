@@ -19,7 +19,7 @@ use command: virsh net-edit default
 <host mac='00:0C:24:4F:88:7C' name='Windows10' ip='192.168.122.2'/>
 ```
 
-Start virsh default network
+Start virsh default network interface
 
 ```
 virsh net-autostart default
@@ -47,7 +47,7 @@ virt-install --name='Windows10' \
 
 Now connect over vnc, and finish installation.
 
-If you want more then 2 cores, use "virsh edit Windows10", and edit the following below "<features>" section:
+If you want more then 2 cores, use "virsh edit Windows10", and edit the following below "features" section:
 
 
 ```
