@@ -5,7 +5,7 @@ Install kvm packages
 
 ```
 apt update
-apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-efi qemu-utils virt-viewer
+apt install dnsmasq cpu-checker qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager qemu-efi qemu-utils virt-viewer ovmf
 ufw allow 5900
 ufw allow 3389
 
