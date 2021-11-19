@@ -42,7 +42,8 @@ virt-install --name='Windows10' \
 --accelerate \
 --cpuset=0,1,2,3,4,5 \
 --network default,mac=00:0C:24:4F:88:7C \
---os-variant win10
+--os-variant win10 \
+--boot uefi
 ```
 
 Now connect over vnc, and finish installation.
