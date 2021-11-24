@@ -53,6 +53,7 @@ If you want more then 2 cores, use "virsh edit Windows10", and edit the followin
 
 ```
 <cpu mode='host-passthrough' check='none'>
+<cache mode='passthrough'/>
 <topology sockets='1' cores='4' threads='2'/>
 </cpu>
   
