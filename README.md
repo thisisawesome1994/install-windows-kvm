@@ -59,3 +59,51 @@ If you want more then 2 cores, use "virsh edit Windows10", and edit the followin
 </cpu>
   
 ```
+
+If you want to portforward to your kvm clients, do the following:
+
+1. Make script inside /opt/scripts
+
+```
+cd /opt && mkdir scripts && cd scripts && nano iptables-forward.sh
+
+```
+
+copy the following inside:
+
+```
+# /etc/rc.local
+
+
+(
+# Make sure the libvirt has started and has initialized its network.
+while [ `ps -e | grep -c libvirtd` -lt 1 ]; do
+        sleep 1
+done
+sleep 10
+# Set up custom iptables rules.
+iptables -t nat -I PREROUTING -p tcp -d YOUR_IP_ADDRESS --dport 3389 -j DNAT --to-destination 192.168.122.2:3389
+iptables -t nat -I PREROUTING -p tcp -d YOUR_IP_ADDRESS --dport 9998 -j DNAT --to-destination 192.168.122.2:9998
+iptables -I FORWARD -m state -d 192.168.122.0/24 --state NEW,RELATED,ESTABLISHED -j ACCEPT
+) &
+
+```
+
+(change "YOUR_IP_ADDRESS" with your actual ip address, and change your desired ports accordingly)
+
+2. make crontab
+
+```
+nano crontab -e
+
+```
+
+Type the following:
+
+```
+@reboot /opt/scripts/iptables-forward.sh
+
+```
+
+Reboot...
+Done!
