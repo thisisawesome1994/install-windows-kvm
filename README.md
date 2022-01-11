@@ -22,6 +22,7 @@ use command: virsh net-edit default
 Start virsh default network interface
 
 ```
+virsh net-destroy default
 virsh net-autostart default
 virsh net-start default
 ```
